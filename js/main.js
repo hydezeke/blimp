@@ -55,7 +55,7 @@ function create() {
     bullets.setAll('anchor.y', 0.5);
 
     //  Our player ship
-    sprite = game.add.sprite(game.world.center.x, game.world.center.y, 'ship');
+    sprite = game.add.sprite(400,225, 'ship');
     sprite.anchor.set(0.5);
     var childLit = sprite.addChild(game.make.sprite(0,0, 'shiplit'));
     childLit.anchor.set(0.5,0.5);
