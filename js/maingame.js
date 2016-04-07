@@ -146,7 +146,7 @@ window.onload = function() {
     var shootTimer = 0;
     function shootUpdate(){
         shootTimer -= game.time.elapsed;
-         if (shootTimer < 0 && game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+         if (shootTimer < 0 && game.input.keyboard.isDown(Phaser.Keyboard.CONTROL)) {
              shootTimer = 500;
              var d = 100000;
              var current = null;
