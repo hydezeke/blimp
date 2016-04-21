@@ -15,7 +15,7 @@ window.onload = function() {
 
     function preload() {
 
-        game.load.spritesheet('sorc', 'assets/sorc.png', 64, 64);
+        game.load.spritesheet('sorc', 'assets/sorc.png', 64,64);
         game.load.spritesheet('bat', 'assets/bat.png', 32,32);
         game.load.spritesheet('blast', 'assets/blast.png', 16,16);
         game.load.image('background', 'assets/background2.png');
@@ -25,7 +25,7 @@ window.onload = function() {
         game.load.image('worldTiles', 'assets/world.png');
     }
 
-    var player;
+    var player, playerShadow;
     var facing = 'left';
     var jumpTimer = 0;
     var cursors;
@@ -42,6 +42,8 @@ window.onload = function() {
     
     var map;
     var layer;
+    
+    var health = 5;
 
     function create() {
         
@@ -91,6 +93,10 @@ window.onload = function() {
         player.animations.add('fall', [13,14,15,16],20,true);
         
         game.camera.follow(player);
+        
+        playerShadow = game.add.sprite(32,32,'sorc');
+        playerShadow.tint = 0x000000;
+        playerShadow.parent = player;
 
         cursors = game.input.keyboard.createCursorKeys();
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.UP);
@@ -127,8 +133,9 @@ window.onload = function() {
     
     function update(){
         game.physics.arcade.collide(player, layer);
-        game.physics.arcade.collide(player, bats);
+        //game.physics.arcade.collide(player, bats);
         game.physics.arcade.collide(bats, layer);
+        game.physics.arcade.collide(bats,bats);
         playerUpdate();
         batUpdate();
         
@@ -194,16 +201,23 @@ window.onload = function() {
     function batUpdate(){
        
         game.physics.arcade.overlap(bullets, bats, killBat, null, this);
+        game.physics.arcade.overlap(player,bats, batHurtPlayer,null, this);
         var len;
         bats.forEach(function(item) {
         //game.physics.arcade.collide(item, bullets, killBat, item, this);
-           item.body.velocity.x += (Math.random()*2-1)*500*game.time.elapsed/1000;
-           item.body.velocity.y += (Math.random()*2-1)*500*game.time.elapsed/1000;
+            var myPoint = new Phaser.Point();
+            myPoint.x = player.body.position.x - item.body.position.x;
+            myPoint.y = player.body.position.y - item.body.position.y;
+            myPoint.normalize();
+            
+            item.body.acceleration.x = myPoint.x*2000;
+            item.body.acceleration.y = myPoint.y*2000;
             item.body.velocity.x = checkV(item.body.velocity.x,400);
             item.body.velocity.y = checkV(item.body.velocity.y,400);
             if(item.animations.currentAnim.frame >= 6){
                 item.kill();
             }
+            item.body.maxVelocity = 0.1;
            /* if (game.physics.arcade.collide(item, player, collisionHandler, processHandler, this))
             {
                 item.animations.play('die');
@@ -217,8 +231,8 @@ window.onload = function() {
     function playerUpdate() {
 
         // game.physics.arcade.collide(player, layer);
-
-       
+       // player.tint = Math*random()*0xffffff;
+        
         if(player.body.onFloor()){
             if(!onFloor){
                 yScale = 0.2;
@@ -305,6 +319,14 @@ window.onload = function() {
             player.body.velocity.x = -horSpeed;
         }
         
+    }
+    
+    function batHurtPlayer(a,b){
+       b.kill();
+        hurtPlayer();
+    }
+    function hurtPlayer(){
+        health--;
     }
 
     function render () {
