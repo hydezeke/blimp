@@ -153,54 +153,6 @@
                 {
                  "gid":39,
                  "height":48,
-                 "id":9,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":354.787878787879,
-                 "y":381.575757575758
-                }, 
-                {
-                 "gid":39,
-                 "height":48,
-                 "id":13,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":448.727272727273,
-                 "y":427.515151515152
-                }, 
-                {
-                 "gid":39,
-                 "height":48,
-                 "id":14,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":491.151515151515,
-                 "y":336.606060606061
-                }, 
-                {
-                 "gid":39,
-                 "height":48,
                  "id":15,
                  "name":"",
                  "properties":
@@ -213,22 +165,6 @@
                  "width":48,
                  "x":169.939393939394,
                  "y":409.333333333333
-                }, 
-                {
-                 "gid":39,
-                 "height":48,
-                 "id":16,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":48,
-                 "x":633.575757575758,
-                 "y":500.242424242424
                 }],
          "opacity":1,
          "type":"objectgroup",
