@@ -125,6 +125,8 @@ window.onload = function() {
 		restartTimer = -1;
 		bossTimer = 4500;
 		health = 10000;
+        bossKey = game.input.keyboard.addKey(Phaser.Keyboard.T);
+        
         this.game.scale.pageAlignHorizontally = true;this.game.scale.pageAlignVertically = true;this.game.scale.refresh();
         
         game.stage.backgroundColor = '#9890b7';
@@ -280,6 +282,7 @@ window.onload = function() {
 	}
     
 	var prevTitleShowing = true;
+    var bossKey;
     function update(){
 		if(restartTimer > 0){
 			if(vanquish != null && vanquish.exists){
@@ -303,6 +306,11 @@ window.onload = function() {
 		
 		if(!titleShowing)
 			bossTimer -= game.time.elapsed/10;
+        
+        
+        if(bossKey.isDown){
+            bossTimer = 0;
+        }
 		if(bossTimer < 0){
 			bossTimer = 0;
 			if(!bossSpawned){
@@ -332,9 +340,9 @@ window.onload = function() {
         
 		
         
-		if(bossSpawned){
+		if(true || bossSpawned){
 			//game.physics.arcade.collide(boss, player);
-            game.stage.backgroundColor = 256*256*256+43*256+43;
+           // game.stage.backgroundColor = 0xFF3333;
 			game.physics.arcade.collide(boss, layer);
 			handsMove();
 			rotateUpdate();
