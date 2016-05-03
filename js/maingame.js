@@ -313,7 +313,7 @@ window.onload = function() {
 		var bbt = Math.round((bossTimer/180)*140+43);
 		var gbt = Math.round((bossTimer/180)*100+44);
 		var rbt = Math.round((1-bossTimer/180)*70 + 152);
-		game.stage.backgroundColor = (rbt)*256*256+gbt*256+bbt;
+		//game.stage.backgroundColor = (rbt)*256*256+gbt*256+bbt;
 		batSpawnUpdate();
         game.physics.arcade.collide(player, layer);
         //game.physics.arcade.collide(player, bats);
@@ -334,6 +334,7 @@ window.onload = function() {
         
 		if(bossSpawned){
 			//game.physics.arcade.collide(boss, player);
+            game.stage.backgroundColor = 256*256*256+43*256+43;
 			game.physics.arcade.collide(boss, layer);
 			handsMove();
 			rotateUpdate();
