@@ -94,7 +94,7 @@ window.onload = function() {
 	
 	
     function bossCreate(){
-		bossHealth = 100;
+		bossHealth = 10000;
         rotating2 = game.add.sprite(1000, 1000, 'rotating');
         rotating2.anchor.setTo(0.5, 0.5);
         rotating2.scale.setTo(1, 1);
@@ -123,8 +123,8 @@ window.onload = function() {
     function create() {
 		bossSpawned = false;
 		restartTimer = -1;
-		bossTimer = 180;
-		health = 100;
+		bossTimer = 4500;
+		health = 10000;
         this.game.scale.pageAlignHorizontally = true;this.game.scale.pageAlignVertically = true;this.game.scale.refresh();
         
         game.stage.backgroundColor = '#9890b7';
