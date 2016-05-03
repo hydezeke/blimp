@@ -650,7 +650,7 @@ window.onload = function() {
     var vanquish;
 	function bossHit(a, b){
 		bossGotHitTimer = 0.2;
-        bossHealth = bossHealth -200;
+        bossHealth = bossHealth -1;
         if (bossHealth <= 70 && handleft.exists){ handleft.kill(); game.sound.play('hit2'); }
         if (bossHealth <= 40 && handright.exists){ handright.kill(); game.sound.play('hit2');}
         if (bossHealth <= 20 && rotating2.exists){ rotating2.kill(); game.sound.play('hit2');}
